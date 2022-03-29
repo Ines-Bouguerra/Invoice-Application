@@ -28,8 +28,7 @@ This repo contains the UI code that powers the Invoice app.
 ## Contributing
 We :heart: contributions from everyone and contributions to this project are encouraged, and compensated. We welcome [bug reports](https://github.com/Ines-Bouguerra/invoice-app/issues/), [bug fixes](https://github.com/Ines-Bouguerra/invoice-app/pulls) and feedback is always appreciated. For more details, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Ines-Bouguerra/invoice-app/issues)
-[![GitHub contributors](https://img.shields.io/github/contributors/lbryio/lbry-desktop.svg)](https://github.com/Ines-Bouguerra/invoice-app/graphs/contributors/)
+## [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Ines-Bouguerra/invoice-app/issues)[![GitHub contributors](https://img.shields.io/github/contributors/lbryio/lbry-desktop.svg)](https://github.com/Ines-Bouguerra/invoice-app/graphs/contributors/)
 ## Contact
 
 The primary contact for this project is [@ines](https://github.com/Ines-Bouguerra).
