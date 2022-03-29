@@ -30,7 +30,8 @@ export default {
   },
   components: {
     Navigation,
-    InvoiceModal,Modal,
+    InvoiceModal,
+    Modal,
   },
   created() {
     this.GET_INVOICES();
@@ -49,10 +50,9 @@ export default {
       this.mobile = false;
     },
   },
-    computed: {
+  computed: {
     ...mapState(["invoiceModal", "modalActive", "invoicesLoaded"]),
   },
-
 };
 </script>
 

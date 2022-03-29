@@ -1,14 +1,14 @@
 <template>
   <header class="flex">
     <div class="div branding flex">
-        <img src="@/assets/file-invoice-dollar-solid.png" alt="" />
+      <img src="@/assets/file-invoice-dollar-solid.png" alt="" />
     </div>
   </header>
 </template>
 
 <script>
 export default {
-    name: "InvoiceNavigation"
+  name: "InvoiceNavigation",
 };
 </script>
 

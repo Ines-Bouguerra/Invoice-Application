@@ -1,7 +1,12 @@
 import { createStore } from "vuex";
 import db from "../firebase/firebaseInit";
-import { doc, getDocs, collection } from "firebase/firestore";
-
+import {
+  doc,
+  getDocs,
+  collection,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 
 export default createStore({
   state: {
@@ -33,8 +38,11 @@ export default createStore({
     TOGGLE_EDIT_INVOICE(state) {
       state.editInvoice = !state.editInvoice;
     },
+    /* Deleting the invoice from the database. */
     DELETE_INVOICE(state, payload) {
-      state.invoiceData = state.invoiceData.filter((invoice) => invoice.docId !== payload);
+      state.invoiceData = state.invoiceData.filter(
+        (invoice) => invoice.docId !== payload
+      );
     },
     UPDATE_STATUS_TO_PAID(state, payload) {
       state.invoiceData.forEach((invoice) => {
@@ -55,8 +63,9 @@ export default createStore({
     },
   },
   actions: {
+    /* The `GET_INVOICES` action is fetching the data from the database and storing it in the state. */
     async GET_INVOICES({ commit, state }) {
-      const getData = collection(db, 'invoices');
+      const getData = collection(db, "invoices");
       const results = await getDocs(getData);
       results.docs.forEach((doc) => {
         if (!state.invoiceData.some((invoice) => invoice.docId === doc.id)) {
@@ -98,21 +107,21 @@ export default createStore({
       commit("SET_CURRENT_INVOICE", routeId);
     },
     async DELETE_INVOICE({ commit }, docId) {
-      const getInvoice =  doc(collection(db, "invoices"),docId)
-      await getInvoice.delete();
+      const getInvoice = doc(db, "invoices", docId);
+      await deleteDoc(getInvoice);
       commit("DELETE_INVOICE", docId);
     },
     async UPDATE_STATUS_TO_PAID({ commit }, docId) {
-      const getInvoice = doc(collection(db, "invoices"),docId)
-      await getInvoice.update({
+      const getInvoice = doc(db, "invoices", docId);
+      await updateDoc(getInvoice, {
         invoicePaid: true,
         invoicePending: false,
       });
       commit("UPDATE_STATUS_TO_PAID", docId);
     },
     async UPDATE_STATUS_TO_PENDING({ commit }, docId) {
-      const getInvoice = doc(collection(db, "invoices"),docId)
-      await getInvoice.update({
+      const getInvoice = doc(db, "invoices", docId);
+      await updateDoc(getInvoice, {
         invoicePaid: false,
         invoicePending: true,
         invoiceDraft: false,
